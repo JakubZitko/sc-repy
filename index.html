@@ -3,10 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
     <title>Sportovní centrum Řepy - Tolik sportovních možností na jednom místě!</title>
+    <meta name="description" content="Objevte Sportovní centrum Řepy v Praze. Nabízíme plavecký bazén, wellness, sportovní halu, venkovní kurty a širokou škálu kurzů pro dospělé i děti.">
+    <meta name="keywords" content="sport, praha, řepy, plavání, wellness, sauna, fitness, tenis, volejbal, sportovní centrum, bazén">
+    <meta name="author" content="Sportovní centrum Řepy">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sc-repy.cz/">
+    <meta property="og:title" content="Sportovní centrum Řepy - Tolik sportovních možností na jednom místě!">
+    <meta property="og:description" content="Objevte Sportovní centrum Řepy v Praze. Nabízíme plavecký bazén, wellness, sportovní halu, venkovní kurty a širokou škálu kurzů pro dospělé i děti.">
+    <meta property="og:image" content="https://sc-repy.cz/wp-content/uploads/2019/12/DSC_3180.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://sc-repy.cz/">
+    <meta property="twitter:title" content="Sportovní centrum Řepy - Tolik sportovních možností na jednom místě!">
+    <meta property="twitter:description" content="Objevte Sportovní centrum Řepy v Praze. Nabízíme plavecký bazén, wellness, sportovní halu, venkovní kurty a širokou škálu kurzů pro dospělé i děti.">
+    <meta property="twitter:image" content="https://sc-repy.cz/wp-content/uploads/2019/12/DSC_3180.jpg">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
     <style>
         :root {
             --primary-color: #0095da; /* New primary blue */
@@ -26,6 +47,10 @@
             font-family: 'Montserrat', sans-serif;
         }
         
+        html {
+             scroll-behavior: smooth;
+        }
+
         body {
             overflow-x: hidden;
             font-size: 16px;
@@ -59,7 +84,8 @@
         }
         
         header.scrolled .lang-selector,
-        header.scrolled .menu-btn {
+        header.scrolled .menu-btn,
+        header.scrolled .opening-status {
             color: var(--text-dark);
         }
         
@@ -262,7 +288,6 @@
             transition: transform 0.3s ease, gap 0.3s ease;
         }
 
-        /* 1. Hero button icons hidden by default */
         .hero-btn svg {
             opacity: 0;
             width: 0;
@@ -274,7 +299,6 @@
             gap: 15px;
         }
 
-        /* 1. Hero button icons visible on hover */
         .hero-btn:hover svg {
             opacity: 1;
             width: 24px;
@@ -286,7 +310,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(15, 35, 58, 0.5); /* Dark blue overlay */
+            background-color: rgba(15, 35, 58, 0.5);
             z-index: 1;
         }
 
@@ -310,48 +334,36 @@
         
         .events-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
             justify-content: center;
         }
         
         .event-card {
             display: flex;
-            background-color: transparent;
+            background-color: rgba(255,255,255,0.05);
             border-radius: 10px;
             overflow: hidden;
-            background-color: rgba(255,255,255,0.05);
-        }
-        
-        .event-img {
-            flex: 1;
-            max-width: 200px;
-            min-height: 200px;
-        }
-        
-        .event-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
         }
         
         .event-content {
-            flex: 2;
-            padding: 20px 25px;
+            padding: 25px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
         
         .event-title {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: 600;
             margin-bottom: 15px;
+            line-height: 1.4;
         }
         
         .event-date {
-            font-size: 1rem;
+            font-size: 0.9rem;
             margin-bottom: 5px;
+            opacity: 0.8;
         }
         
         .event-time {
@@ -462,14 +474,14 @@
         
         .activities-slider {
             overflow-x: auto;
-            scrollbar-width: none; /* Firefox */
-            -ms-overflow-style: none; /* IE/Edge */
+            scrollbar-width: none;
+            -ms-overflow-style: none;
             padding-bottom: 20px;
             scroll-snap-type: x mandatory;
         }
         
         .activities-slider::-webkit-scrollbar {
-            display: none; /* Chrome, Safari, Opera */
+            display: none;
         }
         
         .activities-track {
@@ -535,9 +547,8 @@
             margin-top: 40px;
         }
         
-        /* Key Stats Section - Compact Staggered Layout */
         .key-stats {
-            padding: 80px 0;
+            padding: 60px 0; /* Reduced padding */
             position: relative;
             background: url('https://sc-repy.cz/wp-content/uploads/2019/12/DSC_3048.jpg') no-repeat center center;
             background-size: cover;
@@ -580,9 +591,9 @@
             justify-content: center;
             align-items: flex-end;
             flex-wrap: wrap;
-            gap: 50px;
+            gap: 30px; /* Reduced gap */
             width: 100%;
-            margin-bottom: 60px;
+            margin-bottom: 50px; /* Reduced margin */
         }
 
         .stat-item {
@@ -590,7 +601,7 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            width: 180px;
+            width: 160px; /* Reduced width */
             transform: translateY(var(--offset, 0px));
             transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
@@ -600,26 +611,25 @@
         }
 
         .stat-icon {
-            margin-bottom: 20px;
+            margin-bottom: 15px; /* Reduced margin */
             opacity: 0.9;
         }
 
         .stat-number {
-            font-size: 4rem;
+            font-size: 3.5rem; /* Reduced font size */
             font-weight: 700;
             line-height: 1;
-            margin-bottom: 15px;
+            margin-bottom: 10px; /* Reduced margin */
             text-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
         .stat-text {
-            font-size: 1rem;
-            line-height: 1.5;
-            max-width: 150px;
+            font-size: 0.9rem; /* Reduced font size */
+            line-height: 1.4;
+            max-width: 140px;
             opacity: 0.9;
         }
         
-        /* Clubs Section */
         .clubs-section {
             padding: 100px 0;
             background-color: var(--white);
@@ -671,7 +681,6 @@
             font-weight: 600;
             text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
-        /* Summer Suggestion Section */
         .summer-section {
             padding: 80px 0;
             background-color: var(--white);
@@ -747,7 +756,6 @@
             font-size: 0.9rem;
         }
         
-        /* Social Gallery Section */
         .social-gallery {
             padding: 80px 0;
             background-color: var(--light-bg);
@@ -817,7 +825,6 @@
             transform: scale(1.05);
         }
         
-        /* About Section */
         .about-section {
             padding: 80px 0;
             background-color: var(--light-bg);
@@ -832,7 +839,6 @@
             line-height: 1.7;
         }
         
-        /* Stay Section */
         .stay-section {
             padding: 100px 0;
             position: relative;
@@ -873,12 +879,10 @@
             line-height: 1.6;
         }
         
-        /* Footer */
         footer {
             background-color: var(--dark-bg);
             color: var(--white);
             padding: 80px 0 30px;
-            /* 5. Add rounded corners to the footer top */
             border-top-left-radius: 24px;
             border-top-right-radius: 24px;
         }
@@ -984,7 +988,6 @@
             opacity: 0.7;
         }
         
-        /* Menu Overlay CSS */
         .menu-overlay {
             position: fixed;
             top: 0;
@@ -1024,12 +1027,8 @@
         }
 
         @keyframes slideIn {
-            from {
-                transform: translateX(100%);
-            }
-            to {
-                transform: translateX(0);
-            }
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
         }
 
         .menu-header {
@@ -1088,9 +1087,8 @@
 
         .menu-left-links {
             list-style: none;
-            padding: 0;
-            margin: 0;
             padding: 20px 30px 30px;
+            margin: 0;
         }
 
         .menu-left-links li {
@@ -1195,7 +1193,6 @@
             background-color: #007bb5;
         }
 
-        /* Contact Map Section Styles */
         .contact-map-section {
             padding: 80px 0;
             background-color: var(--white);
@@ -1222,7 +1219,7 @@
 
         .contact-info-wrapper {
             flex: 1;
-            background-color: #d9efff; /* Light blue background */
+            background-color: #d9efff;
             padding: 50px;
             display: flex;
             flex-direction: column;
@@ -1270,7 +1267,7 @@
         .map-btn {
             display: inline-flex;
             align-items: center;
-            gap: 0; /* Let icon wrapper control gap */
+            gap: 0;
             background-color: var(--primary-color);
             color: var(--white);
             padding: 15px 25px;
@@ -1298,7 +1295,6 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
-        /* Offerings Panel */
         .offerings-panel {
             position: absolute;
             bottom: 40px;
@@ -1389,7 +1385,6 @@
             border: 2px solid rgba(255, 255, 255, 0.3);
         }
 
-        /* 2. Fixes for Genie Effect Overlay */
         .genie-overlay {
             position: absolute;
             bottom: 100%;
@@ -1405,7 +1400,7 @@
             transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.4s ease;
             z-index: 20;
             overflow: hidden;
-            margin-bottom: 10px; /* Added margin */
+            margin-bottom: 10px;
         }
 
         .services-trigger-area:hover .genie-overlay,
@@ -1422,7 +1417,7 @@
         .genie-left {
             width: 35%;
             background-color: var(--light-bg);
-            padding: 30px; /* Adjusted padding */
+            padding: 30px;
         }
 
         .genie-left img {
@@ -1436,7 +1431,7 @@
         .genie-left h4 {
             font-size: 1.2rem;
             margin-bottom: 10px;
-            color: var(--text-dark); /* Enforce color */
+            color: var(--text-dark);
         }
         .genie-left p {
             font-size: 0.9rem;
@@ -1446,7 +1441,7 @@
 
         .genie-right {
             width: 65%;
-            padding: 30px; /* Adjusted padding */
+            padding: 30px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -1469,7 +1464,7 @@
         }
 
         .genie-item .icon-bg {
-            width: 50px; /* Increased size */
+            width: 50px;
             height: 50px;
             border-radius: 50%;
             display: flex;
@@ -1477,11 +1472,11 @@
             justify-content: center;
             flex-shrink: 0;
             background-color: var(--light-bg);
-            font-size: 22px; /* Adjusted font size */
+            font-size: 22px;
         }
 
         .genie-item img {
-            width: 80px;  /* Increased image size */
+            width: 80px;
             height: 50px;
             border-radius: 6px;
             object-fit: cover;
@@ -1489,26 +1484,25 @@
         }
 
         .genie-item-content {
-            text-align: left; /* Ensure left alignment */
+            text-align: left;
         }
 
         .genie-item-content h4 {
-            font-size: 1.05rem; /* Adjusted font size */
+            font-size: 1.05rem;
             font-weight: 600;
             margin-bottom: 4px;
-            color: var(--text-dark); /* Enforce color */
+            color: var(--text-dark);
         }
         .genie-item-content p {
             font-size: 0.85rem;
             line-height: 1.4;
-            color: #555; /* Enforce color */
+            color: #555;
         }
 
         .genie-button-row {
             text-align: right;
         }
 
-        /* Live Stats Panel Styling */
         .live-stats-panel {
             display: flex;
             justify-content: center;
@@ -1539,7 +1533,6 @@
             opacity: 0.8;
         }
 
-        /* Opening Hours Status Styling */
         .opening-status {
             display: flex;
             align-items: center;
@@ -1554,7 +1547,7 @@
             width: 10px;
             height: 10px;
             border-radius: 50%;
-            background-color: #888; /* Default grey color */
+            background-color: #888;
             transition: background-color 0.3s ease;
         }
 
@@ -1585,153 +1578,78 @@
             opacity: 0.9;
         }
 
-        /* Scrolled state for the clock */
-        header.scrolled .opening-status {
-            color: var(--text-dark);
-        }
-
         /* Responsive styles */
         @media (max-width: 1250px) {
             .offerings-panel-content { flex-direction: column; gap: 15px; }
         }
         
         @media (max-width: 1024px) {
-            .hero h1 {
-                font-size: 4rem;
-            }
-            
-            .hero p {
-                font-size: 2rem;
-            }
-            
-            .gallery-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            
-            .gallery-item:first-child {
-                grid-column: span 2;
-            }
+            .hero h1 { font-size: 4rem; }
+            .hero p { font-size: 2rem; }
+            .gallery-grid { grid-template-columns: 1fr 1fr; }
+            .gallery-item:first-child { grid-column: span 2; }
         }
         
         @media (max-width: 992px) {
-            .stats-grid {
-                gap: 40px;
-                align-items: center;
-                min-height: auto;
-            }
-            .stat-item {
-                transform: translateY(0);
-            }
-            .stat-item:hover {
-                transform: translateY(-10px) scale(1.05);
-            }
-            .contact-map-container {
-                flex-direction: column;
-                height: auto;
-            }
-            
-            .map-wrapper {
-                height: 350px;
-            }
-            
-            .contact-info-wrapper {
-                padding: 40px;
-            }
-            .menu-container {
-                width: 70%;
-            }
+            .stats-grid { gap: 40px; align-items: center; min-height: auto; }
+            .stat-item { transform: translateY(0); }
+            .stat-item:hover { transform: translateY(-10px) scale(1.05); }
+            .contact-map-container { flex-direction: column; height: auto; }
+            .map-wrapper { height: 350px; }
+            .contact-info-wrapper { padding: 40px; }
+            .menu-container { width: 70%; }
         }
 
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 3rem;
-            }
+            .side-buttons { display: none; } /* Hide side buttons on mobile */
+            .header-right .btn-primary, .opening-status { display: none; } /* Hide elements in header */
+
+            .hero h1 { font-size: 3rem; }
+            .hero p { font-size: 1.5rem; }
             
-            .hero p {
-                font-size: 1.5rem;
-            }
+            .big-title, .events-title, .stay-title, .summer-title { font-size: 2rem; }
             
-            .big-title, .events-title, .stay-title, .summer-title {
-                font-size: 2rem;
-            }
+            .discovery-title, .discovery-text { flex: 100%; padding-right: 0; }
             
-            .discovery-title, .discovery-text {
-                flex: 100%;
-                padding-right: 0;
-            }
+            .stats-grid, .clubs-grid { grid-template-columns: 1fr; }
             
-            .stats-grid, .clubs-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            }
+            .events-grid { grid-template-columns: 1fr; }
             
-            .events-grid {
-                grid-template-columns: 1fr;
-            }
+            .gallery-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+            .gallery-item:first-child { grid-column: 1; grid-row: auto; }
+            .activity-card { min-width: 300px; height: 350px; }
+            .key-stats { padding: 60px 0; }
+            .key-stats-header { margin-bottom: 50px; }
+            .stats-grid { row-gap: 30px; margin-bottom: 40px; }
+            .stat-item { width: 100%; }
+            .stat-number { font-size: 3rem; }
+            .contact-title { font-size: 2rem; }
+            .contact-info-wrapper { padding: 30px; }
+            .menu-container { width: 100%; border-radius: 0; }
             
-            .gallery-grid {
-                grid-template-columns: 1fr;
-                grid-template-rows: repeat(5, 200px);
-            }
+            .menu-content { flex-direction: column; overflow-y: auto; }
+            .menu-left, .menu-right { width: 100%; }
+            .menu-left { order: 2; padding: 20px; }
+            .menu-right { order: 1; padding: 30px 20px; }
+            .menu-buttons { margin-bottom: 30px; }
             
-            .gallery-item:first-child {
-                grid-column: 1;
-            }
-            .activity-card {
-                min-width: 300px;
-                height: 350px;
-            }
-            .key-stats {
-                padding: 60px 0;
-            }
-            .key-stats-header {
-                margin-bottom: 50px;
-            }
-            .stats-grid {
-                row-gap: 50px;
-                column-gap: 20px;
-                justify-content: space-around;
-                margin-bottom: 60px;
-            }
-            .stat-item {
-                width: 140px;
-            }
-            .stat-number {
-                font-size: 3rem;
-            }
-            .contact-title {
-                font-size: 2rem;
-            }
-            .contact-info-wrapper {
-                padding: 30px;
-            }
-            .menu-container {
+            .offerings-panel { 
+                position: relative;
+                bottom: auto;
+                left: auto;
+                transform: none;
                 width: 100%;
-                border-radius: 0;
+                max-width: 100%;
+                padding: 0;
+                margin-top: -80px; /* Pull up over the hero image */
+                z-index: 10;
             }
-            
-            .menu-content {
-                flex-direction: column;
-                overflow-y: auto;
+            .offerings-panel-content {
+                 flex-direction: column;
+                 border-radius: 0;
+                 background: var(--dark-bg);
+                 padding: 30px 20px;
             }
-            
-            .menu-left, .menu-right {
-                width: 100%;
-            }
-            
-            .menu-left {
-                order: 2;
-                padding: 20px;
-            }
-            
-            .menu-right {
-                order: 1;
-                padding: 30px 20px;
-            }
-            
-            .menu-buttons {
-                margin-bottom: 30px;
-            }
-            .offerings-panel { width: 95%; padding: 15px; }
             .showcase-items {
                 width: 100%;
                 overflow-x: auto;
@@ -1741,94 +1659,40 @@
             }
             .showcase-items::-webkit-scrollbar { display: none; }
             .item-link { flex-shrink: 0; }
-            .genie-overlay { width: 90vw; left: 50%; transform: translateX(-50%) scale(0); }
-            .services-trigger-area:hover .genie-overlay,
-            .clubs-trigger-area:hover .genie-overlay {
-                transform: translateX(-50%) scale(1);
-            }
-            .genie-content-wrapper { flex-direction: column; }
-            .genie-left, .genie-right { width: 100%; }
+            .genie-overlay { display: none; } /* Hide genie on mobile for simplicity */
         }
         
         @media (max-width: 480px) {
-            .header-right {
-                gap: 10px;
-            }
-            
-            .nav-controls {
-                gap: 10px;
-            }
-            
-            .btn {
-                padding: 10px 15px;
-                font-size: 14px;
-            }
-            
-            .hero-btn {
-                padding: 12px 20px;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero p {
-                font-size: 1.2rem;
-            }
-            
-            .small-title, .stay-small-title, .summer-small-title {
-                font-size: 1rem;
-            }
-            
-            .big-title, .events-title, .stay-title, .summer-title {
-                font-size: 1.8rem;
-            }
-            
-            .activity-card {
-                min-width: 280px;
-                height: 300px;
-            }
-            
-            .stats-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            
-            .stat-number {
-                font-size: 2.5rem;
-            }
-            
-            .summer-img {
-                height: 350px;
-            }
-            .contact-map-section {
-                padding: 60px 0;
-            }
-            
-            .map-wrapper {
-                height: 250px;
-            }
-            
-            .contact-small-title {
-                font-size: 1rem;
-            }
-            
-            .contact-title {
-                font-size: 1.8rem;
-            }
+            .header-right { gap: 10px; }
+            .nav-controls { gap: 10px; }
+            .btn { padding: 10px 15px; font-size: 14px; }
+            .hero-btn { padding: 12px 20px; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1.2rem; }
+            .small-title, .stay-small-title, .summer-small-title { font-size: 1rem; }
+            .big-title, .events-title, .stay-title, .summer-title { font-size: 1.8rem; }
+            .activity-card { min-width: 280px; height: 300px; }
+            .stats-grid { grid-template-columns: 1fr 1fr; }
+            .stat-number { font-size: 2.5rem; }
+            .summer-img { height: 350px; }
+            .contact-map-section { padding: 60px 0; }
+            .map-wrapper { height: 250px; }
+            .contact-small-title { font-size: 1rem; }
+            .contact-title { font-size: 1.8rem; }
         }
     </style>
 </head>
 <body>
     <!-- Side Buttons -->
     <div class="side-buttons">
-        <a href="#aktuality" class="side-btn" title="Aktuality">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Z"/><path d="M16 2v20"/><path d="M12 10h-2"/><path d="M12 14h-2"/><path d="M12 6h-2"/></svg>
+        <a href="#aktuality" class="side-btn" title="Aktuality" aria-label="Přejít na aktuality">
+            <i data-feather="book-open"></i>
         </a>
-        <a href="#galerie" class="side-btn" title="Galerie">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+        <a href="#galerie" class="side-btn" title="Galerie" aria-label="Přejít na galerii">
+            <i data-feather="image"></i>
         </a>
-        <a href="#kontakt" class="side-btn" title="Kontakt">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        <a href="#kontakt" class="side-btn" title="Kontakt" aria-label="Přejít na kontakt">
+            <i data-feather="map-pin"></i>
         </a>
     </div>
 
@@ -1836,11 +1700,11 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <div class="logo">
-                    <img src="https://sc-repy.cz/wp-content/uploads/2019/11/sc-repy_logo_png_web_small2.png" alt="Sportovní centrum Řepy">
-                </div>
+                <a href="/" class="logo" aria-label="Domovská stránka Sportovního centra Řepy">
+                    <img src="https://sc-repy.cz/wp-content/uploads/2019/11/sc-repy_logo_png_web_small2.png" alt="Logo Sportovní centrum Řepy">
+                </a>
                 <div class="header-right">
-                    <a href="#" class="btn btn-primary">REZERVACE<span class="btn-icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span></a>
+                    <a href="#" class="btn btn-primary">REZERVACE<span class="btn-icon-wrapper"><i data-feather="arrow-right"></i></span></a>
                     <div class="nav-controls">
                         <div class="opening-status">
                             <div class="status-dot" id="status-dot"></div>
@@ -1849,13 +1713,9 @@
                                 <span id="status-message">Načítání...</span>
                             </div>
                         </div>
-                        <button class="menu-btn">
+                        <button class="menu-btn" aria-label="Otevřít menu">
                             Menu
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="3" y1="12" x2="21" y2="12"></line>
-                                <line x1="3" y1="6" x2="21" y2="6"></line>
-                                <line x1="3" y1="18" x2="21" y2="18"></line>
-                            </svg>
+                            <i data-feather="menu"></i>
                         </button>
                     </div>
                 </div>
@@ -1873,11 +1733,9 @@
             <h1>Sportovní centrum Řepy</h1>
             <p>Tolik sportovních možností na jednom místě!</p>
             <a href="#" class="btn btn-primary hero-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                <i data-feather="calendar"></i>
                 <span>ONLINE REZERVACE</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="9 18 15 12 9 6"></polyline>
-                </svg>
+                <i data-feather="chevron-right"></i>
             </a>
         </div>
 
@@ -1888,12 +1746,12 @@
                 <div class="services-trigger-area">
                     <span class="showcase-title">Služby</span>
                     <div class="showcase-items">
-                        <a href="#" class="item-link service-icon-link"><div class="icon-bg">🌊</div></a>
-                        <a href="#" class="item-link service-icon-link"><div class="icon-bg">🧖</div></a>
-                        <a href="#" class="item-link service-icon-link"><div class="icon-bg">🏀</div></a>
-                        <a href="#" class="item-link service-icon-link"><div class="icon-bg">🏋️</div></a>
-                        <a href="#" class="item-link service-icon-link"><div class="icon-bg">🎾</div></a>
-                        <a href="#" class="item-link service-icon-link"><div class="icon-bg">🛏️</div></a>
+                        <a href="#" class="item-link service-icon-link" aria-label="Plavecký bazén"><div class="icon-bg"><i data-feather="life-buoy"></i></div></a>
+                        <a href="#" class="item-link service-icon-link" aria-label="Wellness"><div class="icon-bg"><i data-feather="sun"></i></div></a>
+                        <a href="#" class="item-link service-icon-link" aria-label="Sportovní hala"><div class="icon-bg"><i data-feather="dribbble"></i></div></a>
+                        <a href="#" class="item-link service-icon-link" aria-label="Fitness"><div class="icon-bg"><i data-feather="activity"></i></div></a>
+                        <a href="#" class="item-link service-icon-link" aria-label="Venkovní kurty"><div class="icon-bg"><i data-feather="shield"></i></div></a>
+                        <a href="#" class="item-link service-icon-link" aria-label="Ubytování"><div class="icon-bg"><i data-feather="home"></i></div></a>
                     </div>
                     <div class="genie-overlay">
                         <div class="genie-content-wrapper">
@@ -1904,15 +1762,15 @@
                             </div>
                             <div class="genie-right">
                                 <div class="genie-grid services-grid">
-                                    <a href="#" class="genie-item"><div class="icon-bg">🌊</div><div class="genie-item-content"><h4>Plavecký bazén</h4><p>25m bazén a wellness zóna.</p></div></a>
-                                    <a href="#" class="genie-item"><div class="icon-bg">🧖</div><div class="genie-item-content"><h4>Wellness</h4><p>Čtyři sauny a vířivka.</p></div></a>
-                                    <a href="#" class="genie-item"><div class="icon-bg">🏀</div><div class="genie-item-content"><h4>Sportovní Hala</h4><p>Pro míčové sporty.</p></div></a>
-                                    <a href="#" class="genie-item"><div class="icon-bg">🏋️</div><div class="genie-item-content"><h4>Fitness</h4><p>Moderní kardio a posilovací stroje.</p></div></a>
-                                    <a href="#" class="genie-item"><div class="icon-bg">🎾</div><div class="genie-item-content"><h4>Venkovní Kurty</h4><p>Tenis, beach volejbal, petanque.</p></div></a>
-                                    <a href="#" class="genie-item"><div class="icon-bg">🛏️</div><div class="genie-item-content"><h4>Ubytování</h4><p>Komfortní pokoje pro sportovce.</p></div></a>
+                                    <a href="#" class="genie-item"><div class="icon-bg"><i data-feather="life-buoy"></i></div><div class="genie-item-content"><h4>Plavecký bazén</h4><p>25m bazén a wellness zóna.</p></div></a>
+                                    <a href="#" class="genie-item"><div class="icon-bg"><i data-feather="sun"></i></div><div class="genie-item-content"><h4>Wellness</h4><p>Čtyři sauny a vířivka.</p></div></a>
+                                    <a href="#" class="genie-item"><div class="icon-bg"><i data-feather="dribbble"></i></div><div class="genie-item-content"><h4>Sportovní Hala</h4><p>Pro míčové sporty.</p></div></a>
+                                    <a href="#" class="genie-item"><div class="icon-bg"><i data-feather="activity"></i></div><div class="genie-item-content"><h4>Fitness</h4><p>Moderní kardio a posilovací stroje.</p></div></a>
+                                    <a href="#" class="genie-item"><div class="icon-bg"><i data-feather="shield"></i></div><div class="genie-item-content"><h4>Venkovní Kurty</h4><p>Tenis, beach volejbal, petanque.</p></div></a>
+                                    <a href="#" class="genie-item"><div class="icon-bg"><i data-feather="home"></i></div><div class="genie-item-content"><h4>Ubytování</h4><p>Komfortní pokoje pro sportovce.</p></div></a>
                                 </div>
                                 <div class="genie-button-row">
-                                    <a href="#" class="btn btn-primary">Prozkoumat Všechny Služby<span class="btn-icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span></a>
+                                    <a href="#" class="btn btn-primary">Prozkoumat Všechny Služby<span class="btn-icon-wrapper"><i data-feather="arrow-right"></i></span></a>
                                 </div>
                             </div>
                         </div>
@@ -1943,7 +1801,7 @@
                                     <a href="#" class="genie-item"><img src="https://sc-repy.cz/wp-content/uploads/2024/03/banner-repy-150-marsoun-tenisj.jpg" alt="Maarsoun Tennis" onerror="this.onerror=null;this.src='https://placehold.co/80x50/f59e0b/ffffff?text=Tenis';"><div class="genie-item-content"><h4>Maarsoun Tennis</h4><p>Profesionální akademie pro ambiciózní hráče.</p></div></a>
                                 </div>
                                 <div class="genie-button-row">
-                                    <a href="#" class="btn btn-primary">Zobrazit Všechny Kluby<span class="btn-icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span></a>
+                                    <a href="#" class="btn btn-primary">Zobrazit Všechny Kluby<span class="btn-icon-wrapper"><i data-feather="arrow-right"></i></span></a>
                                 </div>
                             </div>
                         </div>
@@ -1953,7 +1811,6 @@
         </div>
     </section>
 
-    <!-- 4. News section moved here -->
     <section class="events-section" id="aktuality">
         <div class="container">
             <div class="events-header">
@@ -1967,7 +1824,7 @@
                             <div class="event-date">17. 8. 2025</div>
                             <div class="event-time">Přijímáme nové hráče od 4 do 15 let.</div>
                         </div>
-                        <a href="#" class="event-link">Číst více <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+                        <a href="#" class="event-link">Číst více <i data-feather="chevron-right"></i></a>
                     </div>
                 </div>
                 <div class="event-card">
@@ -1977,7 +1834,7 @@
                             <div class="event-date">17. 8. 2025</div>
                             <div class="event-time">Přihlaste své děti od 6 let!</div>
                         </div>
-                        <a href="#" class="event-link">Číst více <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+                        <a href="#" class="event-link">Číst více <i data-feather="chevron-right"></i></a>
                     </div>
                 </div>
                 <div class="event-card">
@@ -1987,7 +1844,7 @@
                             <div class="event-date">15. 8. 2025</div>
                             <div class="event-time">Přijďte se zchladit.</div>
                         </div>
-                        <a href="#" class="event-link">Číst více <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+                        <a href="#" class="event-link">Číst více <i data-feather="chevron-right"></i></a>
                     </div>
                 </div>
                 <div class="event-card">
@@ -1997,17 +1854,16 @@
                             <div class="event-date">7. 8. 2025</div>
                             <div class="event-time">Metličkování v parní lázni.</div>
                         </div>
-                        <a href="#" class="event-link">Číst více <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+                        <a href="#" class="event-link">Číst více <i data-feather="chevron-right"></i></a>
                     </div>
                 </div>
             </div>
             <div class="events-button">
-                <a href="#" class="btn btn-primary">Zobrazit všechny aktuality<span class="btn-icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span></a>
+                <a href="#" class="btn btn-primary">Zobrazit všechny aktuality<span class="btn-icon-wrapper"><i data-feather="arrow-right"></i></span></a>
             </div>
         </div>
     </section>
 
-    <!-- Our Services Section -->
     <section class="station-discovery">
         <div class="container">
             <div class="discovery-content">
@@ -2019,16 +1875,8 @@
                     <p>U nás najdete profesionální sportovní halu, 25metrový bazén s relaxační zónou, moderní wellness se čtyřmi saunami a venkovní kurty na tenis, beach volejbal i petanque.</p>
                     <p>Nabízíme ideální podmínky pro sportovce, rodiny i firemní akce.</p>
                     <div class="slider-controls">
-                        <button class="slider-btn slider-prev">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="15 18 9 12 15 6"></polyline>
-                            </svg>
-                        </button>
-                        <button class="slider-btn slider-next">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="9 18 15 12 9 6"></polyline>
-                            </svg>
-                        </button>
+                        <button class="slider-btn slider-prev" aria-label="Předchozí sportoviště"><i data-feather="chevron-left"></i></button>
+                        <button class="slider-btn slider-next" aria-label="Další sportoviště"><i data-feather="chevron-right"></i></button>
                     </div>
                 </div>
             </div>
@@ -2037,45 +1885,35 @@
                     <div class="activity-card">
                         <img src="https://sc-repy.cz/wp-content/uploads/2019/12/DSC_3141.jpg" alt="Sportovní hala">
                         <div class="activity-content">
-                            <div class="activity-tags">
-                                <span class="activity-tag">Týmové sporty</span>
-                            </div>
+                            <div class="activity-tags"><span class="activity-tag">Týmové sporty</span></div>
                             <div class="activity-title">Sportovní hala</div>
                         </div>
                     </div>
                     <div class="activity-card">
                         <img src="https://sc-repy.cz/wp-content/uploads/2019/12/DSC_2980.jpg" alt="Bazény">
                         <div class="activity-content">
-                            <div class="activity-tags">
-                                <span class="activity-tag">Plavání</span>
-                                <span class="activity-tag">Relaxace</span>
-                            </div>
+                            <div class="activity-tags"><span class="activity-tag">Plavání</span><span class="activity-tag">Relaxace</span></div>
                             <div class="activity-title">Bazény</div>
                         </div>
                     </div>
                     <div class="activity-card">
                         <img src="https://sc-repy.cz/wp-content/uploads/2020/03/para-scaled.jpg" alt="Wellness">
                         <div class="activity-content">
-                           <div class="activity-tags">
-                                <span class="activity-tag">Odpočinek</span>
-                            </div>
+                           <div class="activity-tags"><span class="activity-tag">Odpočinek</span></div>
                             <div class="activity-title">Wellness</div>
                         </div>
                     </div>
                     <div class="activity-card">
                         <img src="https://sc-repy.cz/wp-content/uploads/2019/12/DSC_3246-1.jpg" alt="Venkovní sportoviště">
                         <div class="activity-content">
-                           <div class="activity-tags">
-                                <span class="activity-tag">Tenis</span>
-                                <span class="activity-tag">Beach volejbal</span>
-                            </div>
+                           <div class="activity-tags"><span class="activity-tag">Tenis</span><span class="activity-tag">Beach volejbal</span></div>
                             <div class="activity-title">Venkovní sportoviště</div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="activities-button">
-                <a href="#" class="btn btn-primary">Prozkoumat všechny služby<span class="btn-icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span></a>
+                <a href="#" class="btn btn-primary">Prozkoumat všechny služby<span class="btn-icon-wrapper"><i data-feather="arrow-right"></i></span></a>
             </div>
         </div>
     </section>
@@ -2089,37 +1927,27 @@
             
             <div class="stats-grid">
                 <div class="stat-item" style="--offset: 40px;">
-                    <div class="stat-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6l3 6v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V12l3-6H3Z"/><path d="M5 6V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v1"/></svg>
-                    </div>
+                    <div class="stat-icon"><i data-feather="award" style="width:36px; height:36px;"></i></div>
                     <div class="stat-number">25m</div>
                     <div class="stat-text">délka plaveckého bazénu</div>
                 </div>
                 <div class="stat-item" style="--offset: 0px;">
-                    <div class="stat-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H4Z"/><path d="M8 18v-4"/><path d="M12 18v-4"/><path d="M16 18v-4"/></svg>
-                    </div>
+                    <div class="stat-icon"><i data-feather="thermometer" style="width:36px; height:36px;"></i></div>
                     <div class="stat-number">4</div>
                     <div class="stat-text">sauny ve wellness</div>
                 </div>
                 <div class="stat-item" style="--offset: 40px;">
-                    <div class="stat-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                    </div>
+                    <div class="stat-icon"><i data-feather="users" style="width:36px; height:36px;"></i></div>
                     <div class="stat-number">400</div>
                     <div class="stat-text">míst k sezení na tribuně</div>
                 </div>
                 <div class="stat-item" style="--offset: 0px;">
-                    <div class="stat-icon">
-                         <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.64 17.64a9 9 0 1 0-12.28-12.28"/><path d="M17.64 6.36a9 9 0 1 1-12.28 12.28"/><path d="m12 2 4 4-10 10-4-4 10-10z"/></svg>
-                    </div>
+                    <div class="stat-icon"><i data-feather="shield" style="width:36px; height:36px;"></i></div>
                     <div class="stat-number">3</div>
                     <div class="stat-text">tenisové kurty</div>
                 </div>
                 <div class="stat-item" style="--offset: 40px;">
-                    <div class="stat-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 0-3.5 19.5"/><path d="M12 2a10 10 0 0 1 3.5 19.5"/></svg>
-                    </div>
+                    <div class="stat-icon"><i data-feather="globe" style="width:36px; height:36px;"></i></div>
                     <div class="stat-number">2</div>
                     <div class="stat-text">hřiště na beach volejbal</div>
                 </div>
@@ -2127,16 +1955,12 @@
         
             <div class="live-stats-panel">
                 <div class="live-stat">
-                    <div class="live-stat-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12a5 5 0 0 0 5-5 5 5 0 0 0-10 0 5 5 0 0 0 5 5Z"/><path d="M12 12v6"/><path d="M16 16.5a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"/></svg>
-                    </div>
+                    <div class="live-stat-icon"><i data-feather="thermometer"></i></div>
                     <div class="live-stat-value">28°C</div>
                     <div class="live-stat-label">Teplota vody</div>
                 </div>
                 <div class="live-stat">
-                    <div class="live-stat-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
-                    </div>
+                    <div class="live-stat-icon"><i data-feather="users"></i></div>
                     <div class="live-stat-value">Malá</div>
                     <div class="live-stat-label">Obsazenost bazénu</div>
                 </div>
@@ -2144,7 +1968,6 @@
         </div>
     </section>
 
-    <!-- Facilities Section -->
     <section class="clubs-section">
         <div class="container">
             <div class="clubs-header">
@@ -2168,7 +1991,6 @@
         </div>
     </section>
 
-    <!-- For the Whole Family Section -->
     <section class="summer-section">
         <div class="container summer-container">
             <div class="summer-img">
@@ -2180,85 +2002,60 @@
                 <p class="summer-text">Nabízíme širokou škálu kurzů a aktivit pro děti i dospělé. Přihlaste se na plavání, tenis nebo si přijďte zacvičit na skupinové lekce.</p>
                 <div class="summer-icons">
                     <div class="summer-icon">
-                        <div class="summer-icon-img">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.2 2.2c-1.2.5-2.2 1.4-2.9 2.6m-1.1 3.3c-.3.8-.5 1.7-.5 2.6c0 3.2 2.1 5.8 5 6.8c.8.3 1.7.5 2.6.5c2.6 0 5-1.5 6.3-3.7"/><path d="M14 10a2 2 0 0 0-2-2c-1.2.5-2.2 1.4-2.9 2.6"/><path d="M22 22L2 2"/><path d="M10.2 13.8c-1.2.5-2.2 1.4-2.9 2.6m14.4-2.3c-.3.8-.5 1.7-.5 2.6c0 1.9.9 3.6 2.3 4.7"/><path d="M3.3 7.1c-.3.8-.5 1.7-.5 2.6c0 3.2 2.1 5.8 5 6.8c.8.3 1.7.5 2.6.5"/></svg>
-                        </div>
+                        <div class="summer-icon-img"><i data-feather="life-buoy" style="width:40px; height:40px;"></i></div>
                         <div class="summer-icon-text">Plavecké kurzy</div>
                     </div>
                     <div class="summer-icon">
-                        <div class="summer-icon-img">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.2 11.2a5 5 0 1 1-5.4-5.4"/><path d="M17.2 11.2a5 5 0 1 0-5.4-5.4"/><path d="M22 12c0 5.5-4.5 10-10 10S2 17.5 2 12 6.5 2 12 2"/></svg>
-                        </div>
+                        <div class="summer-icon-img"><i data-feather="shield" style="width:40px; height:40px;"></i></div>
                         <div class="summer-icon-text">Tenisová akademie</div>
                     </div>
                     <div class="summer-icon">
-                        <div class="summer-icon-img">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><path d="M12 18a2 2 0 0 0-2-2c-1.5 0-2.5 1-3 2.5"/><path d="M12 18a2 2 0 0 1 2-2c1.5 0 2.5 1 3 2.5"/><path d="M12 12v1.5a2.5 2.5 0 0 0 5 0V12a2 2 0 0 0-2-2h-1a2 2 0 0 1-2-2V6.5a2.5 2.5 0 0 1 5 0V8"/></svg>
-                        </div>
+                        <div class="summer-icon-img"><i data-feather="sun" style="width:40px; height:40px;"></i></div>
                         <div class="summer-icon-text">Wellness & Relaxace</div>
                     </div>
                     <div class="summer-icon">
-                        <div class="summer-icon-img">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                        </div>
+                        <div class="summer-icon-img"><i data-feather="users" style="width:40px; height:40px;"></i></div>
                         <div class="summer-icon-text">Týmové sporty</div>
                     </div>
                 </div>
-                <a href="#" class="btn btn-primary">Zobrazit všechny kurzy<span class="btn-icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span></a>
+                <a href="#" class="btn btn-primary">Zobrazit všechny kurzy<span class="btn-icon-wrapper"><i data-feather="arrow-right"></i></span></a>
             </div>
         </div>
     </section>
 
-    <!-- Social Gallery Section -->
     <section class="social-gallery" id="galerie">
         <div class="container">
             <div class="gallery-header">
                 <h2 class="gallery-title">#screpy</h2>
                 <div class="social-icons">
-                    <a href="#" class="social-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                    </a>
-                    <a href="#" class="social-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-                    </a>
+                    <a href="#" class="social-icon" aria-label="Instagram"><i data-feather="instagram"></i></a>
+                    <a href="#" class="social-icon" aria-label="Facebook"><i data-feather="facebook"></i></a>
                 </div>
             </div>
             <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="https://sc-repy.cz/wp-content/uploads/2019/12/DSC_3180.jpg" alt="Sportovní hala">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://sc-repy.cz/wp-content/uploads/2019/12/DSC_3173.jpg" alt="Sportovní hala">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://sc-repy.cz/wp-content/uploads/2019/12/DSC_3193.jpg" alt="Sportovní hala">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://sc-repy.cz/wp-content/uploads/2019/12/DSC_3211.jpg" alt="Tenisový kurt">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://sc-repy.cz/wp-content/uploads/2019/12/DSC_3186.jpg" alt="Sportovní hala">
-                </div>
+                <div class="gallery-item"><img src="https://sc-repy.cz/wp-content/uploads/2019/12/DSC_3180.jpg" alt="Sportovní hala"></div>
+                <div class="gallery-item"><img src="https://sc-repy.cz/wp-content/uploads/2019/12/DSC_3173.jpg" alt="Sportovní hala"></div>
+                <div class="gallery-item"><img src="https://sc-repy.cz/wp-content/uploads/2019/12/DSC_3193.jpg" alt="Sportovní hala"></div>
+                <div class="gallery-item"><img src="https://sc-repy.cz/wp-content/uploads/2019/12/DSC_3211.jpg" alt="Tenisový kurt"></div>
+                <div class="gallery-item"><img src="https://sc-repy.cz/wp-content/uploads/2019/12/DSC_3186.jpg" alt="Sportovní hala"></div>
             </div>
         </div>
     </section>
     
-    <!-- About Section -->
     <section class="about-section">
         <div class="container">
              <h2 class="small-title">O Nás</h2>
              <h3 class="big-title" style="margin-bottom: 30px;">Sportovní centrum Řepy</h3>
             <p class="about-text">U nás najdete profesionální sportovní halu, kde se dá hrát volejbal, basketbal, florbal a mnoho dalších sportů a využít ji lze i pro pořádání kulturních akcí. Náš bazén má délku 25 metrů a kromě čtyř plaveckých drah tu najdete i úžasný relaxační bazén a také wellness bazén a dětské brouzdaliště se skluzavkou. Návštěvu saun můžete zkombinovat s bazénem nebo sem jít i samostatně, každopádně tu jsou pro vás připravené čtyři sauny a několik druhů ochlazení.</p>
-            <a href="#" class="btn btn-primary">Více o nás<span class="btn-icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span></a>
+            <a href="#" class="btn btn-primary">Více o nás<span class="btn-icon-wrapper"><i data-feather="arrow-right"></i></span></a>
         </div>
     </section>
 
-    <!-- Contact Section with Map -->
     <section class="contact-map-section" id="kontakt">
         <div class="container">
             <div class="contact-map-container">
                 <div class="map-wrapper">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4391.775939618216!2d14.29350437755858!3d50.06689441490517!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470bbe418e1beb6b%3A0x18fa33d0d12ac224!2sSportovn%C3%AD%20centrum%20%C5%98epy!5e1!3m2!1scs!2scz!4v1755586708296!5m2!1scs!2scz" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe title="Mapa Sportovního centra Řepy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4391.775939618216!2d14.29350437755858!3d50.06689441490517!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470bbe418e1beb6b%3A0x18fa33d0d12ac224!2sSportovn%C3%AD%20centrum%20%C5%98epy!5e1!3m2!1scs!2scz!4v1755586708296!5m2!1scs!2scz" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
                 <div class="contact-info-wrapper">
                     <div class="contact-info-content">
@@ -2267,22 +2064,15 @@
                         <p class="contact-text">Máte dotaz nebo si chcete rezervovat sportoviště? Neváhejte se na nás obrátit. Těšíme se na vaši návštěvu!</p>
                         
                         <div class="contact-details">
-                            <div class="contact-address">
-                                <strong>Na Chobotě 1420/16, 163 00 Praha 6 Řepy</strong>
-                            </div>
+                            <div class="contact-address"><strong>Na Chobotě 1420/16, 163 00 Praha 6 Řepy</strong></div>
                             <a href="tel:420222204103"><div class="contact-phone">+420 222 204 103</div></a>
                             <a href="mailto:info@sc-repy.cz"><div class="contact-email">info@sc-repy.cz</div></a>
                         </div>
                         
                         <a href="https://goo.gl/maps/your-google-map-link" target="_blank" class="btn btn-primary map-btn">
-                            <svg class="map-icon-default" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
-                                <circle cx="12" cy="10" r="3"/>
-                            </svg>
+                            <i data-feather="map-pin" class="map-icon-default"></i>
                             Zobrazit na mapě
-                            <span class="btn-icon-wrapper">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                            </span>
+                            <span class="btn-icon-wrapper"><i data-feather="arrow-right"></i></span>
                         </a>
                     </div>
                 </div>
@@ -2290,22 +2080,17 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-top">
                 <div>
                     <div class="footer-logo">
-                        <img src="https://sc-repy.cz/wp-content/uploads/2019/11/sc-repy_logo_png_web_small2.png" alt="Sportovní centrum Řepy">
+                        <img src="https://sc-repy.cz/wp-content/uploads/2019/11/sc-repy_logo_png_web_small2.png" alt="Logo Sportovní centrum Řepy">
                     </div>
                     <p class="footer-text">Tolik sportovních možností na jednom místě!</p>
                     <div class="footer-social">
-                        <a href="#" class="footer-social-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                        </a>
-                        <a href="#" class="footer-social-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-                        </a>
+                        <a href="#" class="footer-social-icon" aria-label="Instagram"><i data-feather="instagram"></i></a>
+                        <a href="#" class="footer-social-icon" aria-label="Facebook"><i data-feather="facebook"></i></a>
                     </div>
                 </div>
                 <div>
@@ -2333,7 +2118,7 @@
                     <div class="footer-contact">info@sc-repy.cz</div>
                     <div class="footer-contact">+420 222 204 103</div>
                     <div class="footer-buttons">
-                        <a href="#" class="btn btn-primary footer-btn">Rezervovat<span class="btn-icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span></a>
+                        <a href="#" class="btn btn-primary footer-btn">Rezervovat<span class="btn-icon-wrapper"><i data-feather="arrow-right"></i></span></a>
                     </div>
                 </div>
             </div>
@@ -2343,17 +2128,13 @@
         </div>
     </footer>
 
-    <!-- Menu Overlay HTML -->
     <div class="menu-overlay">
         <div class="menu-backdrop"></div>
         <div class="menu-container">
             <div class="menu-header">
-                <button class="menu-close-btn">
+                <button class="menu-close-btn" aria-label="Zavřít menu">
                     Zavřít
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                    </svg>
+                    <i data-feather="x"></i>
                 </button>
             </div>
             <div class="menu-content">
@@ -2372,72 +2153,12 @@
                 </div>
                 <div class="menu-right">
                     <ul class="menu-main-links">
-                        <li class="menu-item">
-                            <a href="#" class="menu-link">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                                    <line x1="3" y1="9" x2="21" y2="9"></line>
-                                    <line x1="9" y1="21" x2="9" y2="9"></line>
-                                </svg>
-                                Plavecký bazén
-                            </a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="#" class="menu-link">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
-                                    <path d="M12 18a2 2 0 0 0-2-2c-1.5 0-2.5 1-3 2.5"/>
-                                    <path d="M12 18a2 2 0 0 1 2-2c1.5 0 2.5 1 3 2.5"/>
-                                </svg>
-                                Wellness centrum
-                            </a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="#" class="menu-link">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M12 2v8"/>
-                                    <path d="M4.93 10.93 10 16"/>
-                                    <path d="M14 16l5.07-5.07"/>
-                                    <path d="M2 21h20"/>
-                                    <path d="M6.5 13.5a4 4 0 0 1 0 5"/>
-                                    <path d="M17.5 13.5a4 4 0 0 0 0 5"/>
-                                </svg>
-                                Sportovní hala
-                            </a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="#" class="menu-link">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M17.2 11.2a5 5 0 1 1-5.4-5.4"/>
-                                    <path d="M17.2 11.2a5 5 0 1 0-5.4-5.4"/>
-                                    <path d="M22 12c0 5.5-4.5 10-10 10S2 17.5 2 12 6.5 2 12 2"/>
-                                </svg>
-                                Venkovní sportoviště
-                            </a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="#" class="menu-link">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                                    <line x1="16" y1="2" x2="16" y2="6"></line>
-                                    <line x1="8" y1="2" x2="8" y2="6"></line>
-                                    <line x1="3" y1="10" x2="21" y2="10"></line>
-                                </svg>
-                                Kurzy a tréninky
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="arrow-icon">
-                                    <polyline points="9 18 15 12 9 6"></polyline>
-                                </svg>
-                            </a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="#" class="menu-link">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
-                                    <circle cx="12" cy="10" r="3"/>
-                                </svg>
-                                Kontakt
-                            </a>
-                        </li>
+                        <li class="menu-item"><a href="#" class="menu-link"><i data-feather="grid"></i>Plavecký bazén</a></li>
+                        <li class="menu-item"><a href="#" class="menu-link"><i data-feather="sun"></i>Wellness centrum</a></li>
+                        <li class="menu-item"><a href="#" class="menu-link"><i data-feather="dribbble"></i>Sportovní hala</a></li>
+                        <li class="menu-item"><a href="#" class="menu-link"><i data-feather="shield"></i>Venkovní sportoviště</a></li>
+                        <li class="menu-item"><a href="#" class="menu-link"><i data-feather="calendar"></i>Kurzy a tréninky<i data-feather="chevron-right" class="arrow-icon"></i></a></li>
+                        <li class="menu-item"><a href="#" class="menu-link"><i data-feather="map-pin"></i>Kontakt</a></li>
                     </ul>
                     <div class="menu-buttons">
                         <a href="#" class="menu-btn-secondary">Ceníky</a>
@@ -2451,94 +2172,63 @@
     </div>
 
     <script>
-        // Header background change on scroll
+        // Header scroll effect
         window.addEventListener('scroll', function() {
             const header = document.querySelector('header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
+            header.classList.toggle('scrolled', window.scrollY > 50);
         });
         
-        // Activity Slider Functionality
+        // Activity Slider
         const sliderContainer = document.querySelector('.activities-slider');
-        const sliderTrack = document.querySelector('.activities-track');
-        const nextBtn = document.querySelector('.slider-next');
-        const prevBtn = document.querySelector('.slider-prev');
-        
-        if (sliderTrack && nextBtn && prevBtn) {
+        if (sliderContainer) {
+            const sliderTrack = document.querySelector('.activities-track');
+            const nextBtn = document.querySelector('.slider-next');
+            const prevBtn = document.querySelector('.slider-prev');
             
             const scrollAmount = () => {
                 const firstCard = sliderTrack.querySelector('.activity-card');
-                if (!firstCard) return 300; // fallback
+                if (!firstCard) return 300;
                 const cardStyle = window.getComputedStyle(firstCard);
                 const cardMargin = parseFloat(cardStyle.marginRight) || 0;
                 const cardGap = parseFloat(window.getComputedStyle(sliderTrack).gap) || 30;
                 return firstCard.offsetWidth + Math.max(cardMargin, cardGap);
             }
             
-            nextBtn.addEventListener('click', () => {
-                sliderContainer.scrollBy({
-                    left: scrollAmount(),
-                    behavior: 'smooth'
-                });
-            });
-            
-            prevBtn.addEventListener('click', () => {
-                sliderContainer.scrollBy({
-                    left: -scrollAmount(),
-                    behavior: 'smooth'
-                });
-            });
+            nextBtn.addEventListener('click', () => sliderContainer.scrollBy({ left: scrollAmount(), behavior: 'smooth' }));
+            prevBtn.addEventListener('click', () => sliderContainer.scrollBy({ left: -scrollAmount(), behavior: 'smooth' }));
         }
 
-
-        // Menu Overlay JavaScript
+        // Menu Overlay
         document.addEventListener('DOMContentLoaded', function() {
             const menuBtn = document.querySelector('.menu-btn');
             const menuOverlay = document.querySelector('.menu-overlay');
             const menuCloseBtn = document.querySelector('.menu-close-btn');
             const menuBackdrop = document.querySelector('.menu-backdrop');
             
-            // Open menu
-            menuBtn.addEventListener('click', function() {
+            const closeMenu = () => {
+                menuOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            };
+
+            menuBtn.addEventListener('click', () => {
                 menuOverlay.classList.add('active');
-                document.body.style.overflow = 'hidden'; // Prevent scrolling
+                document.body.style.overflow = 'hidden';
             });
             
-            // Close menu when clicking close button
-            menuCloseBtn.addEventListener('click', function() {
-                menuOverlay.classList.remove('active');
-                document.body.style.overflow = ''; // Re-enable scrolling
-            });
-            
-            // Close menu when clicking backdrop
-            menuBackdrop.addEventListener('click', function() {
-                menuOverlay.classList.remove('active');
-                document.body.style.overflow = ''; // Re-enable scrolling
-            });
-            
-            // Close menu when pressing ESC key
-            document.addEventListener('keydown', function(e) {
+            menuCloseBtn.addEventListener('click', closeMenu);
+            menuBackdrop.addEventListener('click', closeMenu);
+            document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape' && menuOverlay.classList.contains('active')) {
-                    menuOverlay.classList.remove('active');
-                    document.body.style.overflow = ''; // Re-enable scrolling
+                    closeMenu();
                 }
             });
         });
-    </script>
-    <script>
+
+        // Opening Hours Clock
         document.addEventListener('DOMContentLoaded', function() {
             const openingHours = {
-                // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
-                1: { open: 6, close: 22 }, // Mon: 6:00 AM - 10:00 PM
-                2: { open: 6, close: 22 }, // Tue: 6:00 AM - 10:00 PM
-                3: { open: 6, close: 22 }, // Wed: 6:00 AM - 10:00 PM
-                4: { open: 6, close: 22 }, // Thu: 6:00 AM - 10:00 PM
-                5: { open: 6, close: 22 }, // Fri: 6:00 AM - 10:00 PM
-                6: { open: 8, close: 21 }, // Sat: 8:00 AM - 9:00 PM
-                0: { open: 8, close: 21 }  // Sun: 8:00 AM - 9:00 PM
+                1:{open:6,close:22}, 2:{open:6,close:22}, 3:{open:6,close:22},
+                4:{open:6,close:22}, 5:{open:6,close:22}, 6:{open:8,close:21}, 0:{open:8,close:21}
             };
         
             const statusDot = document.getElementById('status-dot');
@@ -2546,8 +2236,7 @@
             const statusEl = document.getElementById('status-message');
             
             function updateClock() {
-                const now = new Date();
-                timeEl.textContent = now.toLocaleTimeString('cs-CZ');
+                timeEl.textContent = new Date().toLocaleTimeString('cs-CZ');
             }
         
             function updateStatus() {
@@ -2555,51 +2244,29 @@
                 const day = now.getDay();
                 const hour = now.getHours();
                 const minutes = now.getMinutes();
-                
                 const todayHours = openingHours[day];
                 let isOpen = false;
-                let closesSoon = false;
-                let minutesToClose = 0;
-        
+                
                 if (todayHours) {
                     const currentTime = hour + minutes / 60;
                     if (currentTime >= todayHours.open && currentTime < todayHours.close) {
                         isOpen = true;
-                        const closingTime = todayHours.close * 60; // in minutes
-                        const nowInMinutes = hour * 60 + minutes;
-                        minutesToClose = closingTime - nowInMinutes;
-                        if (minutesToClose <= 90) { // 90 minutes warning
-                            closesSoon = true;
-                        }
                     }
                 }
-        
-                // Update dot color
+                
                 statusDot.classList.toggle('green', isOpen);
                 statusDot.classList.toggle('red', !isOpen);
-        
-                // Update status message
-                if (isOpen) {
-                    if (closesSoon) {
-                        const hoursLeft = Math.floor(minutesToClose / 60);
-                        const minsLeft = minutesToClose % 60;
-                        statusEl.textContent = `Zavírá za ${hoursLeft}h ${minsLeft}m`;
-                    } else {
-                        statusEl.textContent = 'Otevřeno';
-                    }
-                } else {
-                    statusEl.textContent = 'Zavřeno';
-                }
+                statusEl.textContent = isOpen ? 'Otevřeno' : 'Zavřeno';
             }
         
-            // Initial calls
             updateClock();
             updateStatus();
-        
-            // Set intervals to update
-            setInterval(updateClock, 1000); // Update time every second
-            setInterval(updateStatus, 60000); // Update status every minute
+            setInterval(updateClock, 1000);
+            setInterval(updateStatus, 60000);
         });
+
+        // Feather Icons
+        feather.replace();
     </script>
 </body>
 </html>
