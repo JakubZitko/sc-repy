@@ -235,8 +235,9 @@
             height: 100vh;
             width: 100%;
             display: flex;
+            flex-direction: column; /* Changed for mobile layout */
             align-items: center;
-            justify-content: center;
+            justify-content: center; /* Center main content */
             text-align: center;
             color: var(--white);
             overflow: hidden;
@@ -250,7 +251,7 @@
             min-height: 100%;
             width: auto;
             height: auto;
-            z-index: 0;
+            z-index: -1;
             transform: translateX(-50%) translateY(-50%);
             background-size: cover;
         }
@@ -260,6 +261,11 @@
             z-index: 2;
             max-width: 900px;
             padding: 0 20px;
+            flex-grow: 1; /* Allow content to take space */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
         
         .hero h1 {
@@ -311,7 +317,7 @@
             width: 100%;
             height: 100%;
             background-color: rgba(15, 35, 58, 0.5);
-            z-index: 1;
+            z-index: 0;
         }
 
         /* Events Section (News) */
@@ -1404,7 +1410,9 @@
         }
 
         .services-trigger-area:hover .genie-overlay,
-        .clubs-trigger-area:hover .genie-overlay {
+        .clubs-trigger-area:hover .genie-overlay,
+        .services-trigger-area.active .genie-overlay,
+        .clubs-trigger-area.active .genie-overlay {
             transform: translateX(-50%) scale(1);
             opacity: 1;
             visibility: visible;
@@ -1600,9 +1608,14 @@
             .menu-container { width: 70%; }
         }
 
+        /*
+         * ===================================================================
+         * MOBILE FIXES START HERE (768px and smaller)
+         * ===================================================================
+        */
         @media (max-width: 768px) {
-            .side-buttons { display: none; } /* Hide side buttons on mobile */
-            .header-right .btn-primary, .opening-status { display: none; } /* Hide elements in header */
+            .side-buttons { display: none; }
+            .header-right .btn-primary, .opening-status { display: none; }
 
             .hero h1 { font-size: 3rem; }
             .hero p { font-size: 1.5rem; }
@@ -1611,7 +1624,7 @@
             
             .discovery-title, .discovery-text { flex: 100%; padding-right: 0; }
             
-            .stats-grid, .clubs-grid { grid-template-columns: 1fr; }
+            .clubs-grid { grid-template-columns: 1fr; }
             
             .events-grid { grid-template-columns: 1fr; }
             
@@ -1620,7 +1633,14 @@
             .activity-card { min-width: 300px; height: 350px; }
             .key-stats { padding: 60px 0; }
             .key-stats-header { margin-bottom: 50px; }
-            .stats-grid { row-gap: 30px; margin-bottom: 40px; }
+            
+            /* --- "V číslech" Section Two-Column Layout --- */
+            .stats-grid { 
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+                align-items: flex-start;
+            }
             .stat-item { width: 100%; }
             .stat-number { font-size: 3rem; }
             .contact-title { font-size: 2rem; }
@@ -1632,34 +1652,71 @@
             .menu-left { order: 2; padding: 20px; }
             .menu-right { order: 1; padding: 30px 20px; }
             .menu-buttons { margin-bottom: 30px; }
-            
+
+            /* --- Hero Bottom Box Mobile Styling --- */
             .offerings-panel { 
-                position: relative;
-                bottom: auto;
-                left: auto;
-                transform: none;
-                width: 100%;
-                max-width: 100%;
-                padding: 0;
-                margin-top: -80px; /* Pull up over the hero image */
-                z-index: 10;
+                width: 95%;
+                bottom: 20px;
             }
             .offerings-panel-content {
-                 flex-direction: column;
-                 border-radius: 0;
-                 background: var(--dark-bg);
-                 padding: 30px 20px;
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px;
+            }
+            .services-trigger-area, .clubs-trigger-area {
+                width: 100%;
+                padding: 0;
             }
             .showcase-items {
-                width: 100%;
+                flex-grow: 1;
                 overflow-x: auto;
                 justify-content: flex-start;
-                padding-bottom: 10px;
-                scrollbar-width: none;
+                padding-bottom: 10px; /* Space for scrollbar */
+                scrollbar-width: none; /* Firefox */
             }
-            .showcase-items::-webkit-scrollbar { display: none; }
-            .item-link { flex-shrink: 0; }
-            .genie-overlay { display: none; } /* Hide genie on mobile for simplicity */
+            .showcase-items::-webkit-scrollbar { 
+                display: none; /* Chrome, Safari */
+            }
+            .item-link {
+                flex-shrink: 0; /* Prevent items from shrinking */
+            }
+
+            /* --- Mobile "Click to Show" Pop-up Styling --- */
+            .genie-overlay {
+                width: 90vw;
+                max-width: 450px;
+                max-height: 60vh; /* Prevent it from being too tall */
+                overflow-y: auto;
+            }
+            .genie-content-wrapper {
+                flex-direction: column;
+            }
+            .genie-left, .genie-right {
+                width: 100%;
+            }
+            .genie-right {
+                padding-top: 0;
+            }
+
+            /* --- Remove Hover Effects on Mobile --- */
+            .btn:hover,
+            .side-btn:hover,
+            .hero-btn:hover,
+            .activity-card:hover,
+            .stat-item:hover,
+            .social-icon:hover,
+            .gallery-item:hover {
+                transform: none !important;
+                box-shadow: none !important;
+            }
+            .activity-card:hover img, .gallery-item:hover img {
+                transform: none !important;
+            }
+            .btn:hover .btn-icon-wrapper, .hero-btn:hover svg {
+                width: 0 !important;
+                opacity: 0 !important;
+                margin-left: 0 !important;
+            }
         }
         
         @media (max-width: 480px) {
@@ -1672,7 +1729,6 @@
             .small-title, .stay-small-title, .summer-small-title { font-size: 1rem; }
             .big-title, .events-title, .stay-title, .summer-title { font-size: 1.8rem; }
             .activity-card { min-width: 280px; height: 300px; }
-            .stats-grid { grid-template-columns: 1fr 1fr; }
             .stat-number { font-size: 2.5rem; }
             .summer-img { height: 350px; }
             .contact-map-section { padding: 60px 0; }
@@ -1680,6 +1736,47 @@
             .contact-small-title { font-size: 1rem; }
             .contact-title { font-size: 1.8rem; }
         }
+        
+
+        /* --- HERO BOTTOM BOX ENHANCEMENTS --- */
+
+/* 1. Make the pop-up box wider and ensure it's responsive */
+.genie-overlay {
+    width: 1050px !important;
+    max-width: 95vw !important;
+}
+
+/* 2. Resize the left/right columns for the new layout */
+.genie-left {
+    width: 30% !important;
+}
+.genie-right {
+    width: 70% !important;
+    padding: 30px 40px !important;
+}
+
+/* 3. Make club images significantly bigger (approx. 3x area) */
+.genie-grid.clubs-grid .genie-item img {
+    width: 150px !important;
+    height: 94px !important;
+}
+
+/* 4. Improve spacing and ensure left alignment for text */
+.genie-grid.clubs-grid {
+    gap: 35px 25px !important; /* Increased row and column gap */
+}
+.genie-item-content {
+    text-align: left !important;
+}
+.genie-item-content h4 {
+    margin-bottom: 6px !important;
+}
+.genie-item-content p {
+    line-height: 1.5 !important;
+}
+.genie-item{
+    align-items: center !important;
+}
     </style>
 </head>
 <body>
@@ -2264,6 +2361,47 @@
             setInterval(updateClock, 1000);
             setInterval(updateStatus, 60000);
         });
+
+        // NEW JAVASCRIPT for Mobile Tap-to-Show Pop-ups
+        document.addEventListener('DOMContentLoaded', function() {
+            const triggerAreas = document.querySelectorAll('.services-trigger-area, .clubs-trigger-area');
+
+            // Function to close all open pop-ups
+            const closeAllPopups = () => {
+                triggerAreas.forEach(area => area.classList.remove('active'));
+            };
+
+            triggerAreas.forEach(area => {
+                area.addEventListener('click', function(event) {
+                    // Don't close the pop-up if a link inside it is clicked
+                    if (event.target.closest('.genie-overlay')) {
+                        return;
+                    }
+                    
+                    event.stopPropagation(); // Prevent click from bubbling to the body
+                    
+                    // Check if the clicked area is already active
+                    const wasActive = this.classList.contains('active');
+                    
+                    // First, close all other popups
+                    closeAllPopups();
+                    
+                    // If it wasn't active, open it
+                    if (!wasActive) {
+                        this.classList.add('active');
+                    }
+                });
+            });
+
+            // Add a listener to the whole document to close pop-ups when clicking outside
+            document.addEventListener('click', function(event) {
+                // If the click is not inside an offerings panel, close pop-ups
+                if (!event.target.closest('.offerings-panel')) {
+                    closeAllPopups();
+                }
+            });
+        });
+
 
         // Feather Icons
         feather.replace();
