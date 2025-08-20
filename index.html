@@ -1612,7 +1612,7 @@
          * ===================================================================
          * MOBILE FIXES START HERE (768px and smaller)
          * ===================================================================
-        */
+         */
         @media (max-width: 768px) {
             .side-buttons { display: none; }
             .header-right .btn-primary, .opening-status { display: none; }
@@ -1685,18 +1685,44 @@
             .genie-overlay {
                 width: 90vw;
                 max-width: 450px;
-                max-height: 60vh; /* Prevent it from being too tall */
+                max-height: 70vh; /* Prevent it from being too tall */
                 overflow-y: auto;
             }
-            .genie-content-wrapper {
-                flex-direction: column;
+            
+            /* --- NEW: HERO BOTTOM BOX MOBILE POP-UP FIXES --- */
+            .genie-overlay .genie-left {
+                display: none; /* Hide the left column with image/main text */
             }
-            .genie-left, .genie-right {
-                width: 100%;
+            .genie-overlay .genie-right {
+                width: 100%; /* Make the right column (item list) full width */
+                padding: 25px 20px;
             }
-            .genie-right {
-                padding-top: 0;
+            .genie-overlay .genie-grid {
+                grid-template-columns: 1fr; /* Make the list a single column */
+                gap: 20px; /* Adjust gap between items */
+                margin-bottom: 25px;
             }
+            .genie-grid.services-grid .genie-item .icon-bg {
+                width: 44px; /* Smaller icon background */
+                height: 44px;
+                font-size: 20px;
+            }
+            .genie-grid.clubs-grid .genie-item img {
+                width: 80px; /* Smaller club image */
+                height: 55px; /* Maintain 16:11 ratio */
+            }
+            .genie-overlay .genie-item-content h4 {
+                font-size: 1rem; /* Smaller text to prevent overflow */
+                margin-bottom: 3px;
+            }
+            .genie-overlay .genie-item-content p {
+                font-size: 0.85rem;
+                line-height: 1.4;
+            }
+            .genie-overlay .genie-button-row {
+                text-align: center; /* Center the button at the bottom */
+            }
+
 
             /* --- Remove Hover Effects on Mobile --- */
             .btn:hover,
@@ -1738,45 +1764,39 @@
         }
         
 
-        /* --- HERO BOTTOM BOX ENHANCEMENTS --- */
-
-/* 1. Make the pop-up box wider and ensure it's responsive */
-.genie-overlay {
-    width: 1050px !important;
-    max-width: 95vw !important;
-}
-
-/* 2. Resize the left/right columns for the new layout */
-.genie-left {
-    width: 30% !important;
-}
-.genie-right {
-    width: 70% !important;
-    padding: 30px 40px !important;
-}
-
-/* 3. Make club images significantly bigger (approx. 3x area) */
-.genie-grid.clubs-grid .genie-item img {
-    width: 150px !important;
-    height: 94px !important;
-}
-
-/* 4. Improve spacing and ensure left alignment for text */
-.genie-grid.clubs-grid {
-    gap: 35px 25px !important; /* Increased row and column gap */
-}
-.genie-item-content {
-    text-align: left !important;
-}
-.genie-item-content h4 {
-    margin-bottom: 6px !important;
-}
-.genie-item-content p {
-    line-height: 1.5 !important;
-}
-.genie-item{
-    align-items: center !important;
-}
+        /* --- HERO BOTTOM BOX DESKTOP ENHANCEMENTS --- */
+        @media (min-width: 769px) {
+            .genie-overlay {
+                width: 1050px;
+                max-width: 95vw;
+            }
+            .genie-left {
+                width: 30%;
+            }
+            .genie-right {
+                width: 70%;
+                padding: 30px 40px;
+            }
+            .genie-grid.clubs-grid .genie-item img {
+                width: 150px;
+                height: 94px;
+            }
+            .genie-grid.clubs-grid {
+                gap: 35px 25px; /* Increased row and column gap */
+            }
+            .genie-item-content {
+                text-align: left;
+            }
+            .genie-item-content h4 {
+                margin-bottom: 6px;
+            }
+            .genie-item-content p {
+                line-height: 1.5;
+            }
+            .genie-item{
+                align-items: center;
+            }
+        }
     </style>
 </head>
 <body>
